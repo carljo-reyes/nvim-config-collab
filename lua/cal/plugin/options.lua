@@ -2,7 +2,7 @@
 -- General Neovim settings and configuration
 -----------------------------------------------------------
 
--- local g = vim.g       -- Global variables
+local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 
 -----------------------------------------------------------
@@ -13,6 +13,8 @@ opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 opt.signcolumn = "auto:4"
 
+g.netrw_bufsettings = 'noma nomod rnu nu nobl nowrap ro'
+g.netrw_banner = 0
 
 -----------------------------------------------------------
 -- Neovim UI
@@ -21,7 +23,7 @@ opt.number = true           -- Show line number
 opt.relativenumber = true   -- Show relative line number
 opt.scrolloff = 4
 opt.cursorline = true
--- opt.showmatch = true        -- Highlight matching parenthesis
+opt.showmatch = true        -- Highlight matching parenthesis
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
