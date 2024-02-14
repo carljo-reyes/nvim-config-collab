@@ -11,8 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
 
+vim.opt.rtp:prepend(lazypath)
 
 local opts = {
     change_detection = {
@@ -36,4 +36,3 @@ local opts = {
 require("lazy").setup({
     { import = "lazy-plugins" },
 }, opts)
-
