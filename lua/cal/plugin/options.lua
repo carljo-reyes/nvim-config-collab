@@ -1,29 +1,30 @@
------------------------------------------------------------
+------------------------------------------------------------------------
 -- General Neovim settings and configuration
------------------------------------------------------------
+------------------------------------------------------------------------
 
 local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 
------------------------------------------------------------
+------------------------------------------------------------------------
 -- General
------------------------------------------------------------
+------------------------------------------------------------------------
 opt.mouse = 'a'                       -- Enable mouse support
-opt.swapfile = false                  -- Don't use swapfile
+-- opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 opt.signcolumn = "auto:4"
 
 g.netrw_bufsettings = 'noma nomod rnu nu nobl nowrap ro'
 g.netrw_banner = 0
+g.netrw_list_hide = g.netrw_list_hide .. ',.git'
 
------------------------------------------------------------
+------------------------------------------------------------------------
 -- Neovim UI
------------------------------------------------------------
+------------------------------------------------------------------------
 opt.number = true           -- Show line number
 opt.relativenumber = true   -- Show relative line number
 opt.scrolloff = 4
 opt.cursorline = true
-opt.showmatch = true        -- Highlight matching parenthesis
+opt.showmatch = false        -- Highlight matching parenthesis
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
@@ -34,9 +35,9 @@ opt.wrap = false            -- No wrap
 opt.termguicolors = true    -- Enable 24-bit RGB colors
 opt.laststatus=3            -- Set global statusline
 
------------------------------------------------------------
+-----------------------------------------------------------------------
 -- Tabs, indent
------------------------------------------------------------
+-----------------------------------------------------------------------
 opt.expandtab = true        -- Use spaces instead of tabs
 opt.shiftwidth = 4          -- Shift 4 spaces when tab
 opt.tabstop = 4             -- 1 tab == 4 spaces
