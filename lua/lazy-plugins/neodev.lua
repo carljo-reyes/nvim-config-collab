@@ -2,6 +2,7 @@
 return {
     'folke/neodev.nvim',
     lazy = false,
+    priority = 1000,
     dependencies = {
         "neovim/nvim-lspconfig",
         "rcarriga/nvim-dap-ui",
