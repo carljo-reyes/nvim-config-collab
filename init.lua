@@ -1,4 +1,5 @@
-vim.g.mapleader = " "
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.maplocalleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -19,7 +20,7 @@ local opts = {
         enabled = true, notify = false
     },
     git = {
-        timeout = 30
+        timeout = 300
     },
     install = {
         colorscheme = { "tokyonight-moon" },
@@ -27,7 +28,8 @@ local opts = {
     performance = {
         rtp = {
             paths = {
-                vim.fn.stdpath("config") .. '/lua/cal'
+                vim.fn.stdpath("config") .. '/lua/cal',
+                vim.fn.stdpath("config") .. '/lua/snippets'
             }
         }
     },

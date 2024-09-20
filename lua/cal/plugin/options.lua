@@ -9,21 +9,20 @@ local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 -- General
 ------------------------------------------------------------------------
 opt.mouse = 'a'                       -- Enable mouse support
--- opt.swapfile = false                  -- Don't use swapfile
+opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 opt.signcolumn = "auto:4"
 
 g.netrw_bufsettings = 'noma nomod rnu nu nobl nowrap ro'
 g.netrw_banner = 0
-g.netrw_list_hide = g.netrw_list_hide .. ',.git'
 
 ------------------------------------------------------------------------
 -- Neovim UI
 ------------------------------------------------------------------------
 opt.number = true           -- Show line number
-opt.relativenumber = true   -- Show relative line number
+opt.relativenumber = true  -- Show relative line number
 opt.scrolloff = 4
-opt.cursorline = true
+-- opt.cursorline = true
 opt.showmatch = false        -- Highlight matching parenthesis
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.splitright = true       -- Vertical split to the right
