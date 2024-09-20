@@ -40,7 +40,17 @@ return {
 
     },
     keys = {
-        { "<M-d>", function() require('dapui').float_element("console", { position = "center", width = 180, height = 25, enter = true }) end },
+        {
+            "<M-d>", function()
+            require('dapui').float_element("console", {
+                position = "center",
+                title = " console ",
+                width = 180,
+                height = 25,
+                enter = true
+            })
+        end
+        },
         { "<M-D>", function() require('dapui').toggle() end },
         { "<M-y>", function() require('dap').toggle_breakpoint() end },
         { "<M-Y>", function() require('dap').toggle_breakpoint(vim.fn.input('Breakpoint condition: ')) end },
