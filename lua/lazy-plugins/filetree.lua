@@ -19,7 +19,7 @@ return {
         },
     },
     keys = {
-        { "<M-e>", cmd "Neotree toggle" },
+        { "<M-e>", cmd "Neotree reveal toggle" },
         { "-", cmd "Neotree focus reveal" }
     }
 }

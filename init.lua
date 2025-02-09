@@ -29,7 +29,7 @@ local opts = {
         rtp = {
             paths = {
                 vim.fn.stdpath("config") .. '/lua/cal',
-                vim.fn.stdpath("config") .. '/lua/snippets'
+                -- vim.fn.stdpath("config") .. '/lua/snippets'
             }
         }
     },

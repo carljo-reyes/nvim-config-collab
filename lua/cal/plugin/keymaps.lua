@@ -13,6 +13,11 @@ vim.keymap.set('v', '<cr>', [["+y]])
 
 vim.keymap.set('n', '<leader>w', cmd "update")
 
+vim.keymap.set({'n', 'v'}, 'gy', [["+y]])
+vim.keymap.set('n', 'gY', [["+y$]])
+
+vim.keymap.set('n', '+', [[<C-a>]])
+vim.keymap.set('n', '_', [[<C-x>]])
 
 ----------------------------------------------------------------
 -- tabs
@@ -22,13 +27,18 @@ vim.keymap.set('n', '<C-t>', cmd "tabnew")
 vim.keymap.set('n', '<M-n>', cmd "tabnew")
 vim.keymap.set('n', '<C-n>', cmd "tabnew")
 
-vim.keymap.set('n', '<M-q>', cmd "tabclose")
 vim.keymap.set('n', '<M-i>', cmd "tabprev")
 vim.keymap.set('n', '<M-o>', cmd "tabnext")
+
+vim.keymap.set('n', '<M-w>', cmd "tabclose")
+vim.keymap.set('n', '<leader>T', cmd "tab sb")
 
 ----------------------------------------------------------------
 -- panes
 ----------------------------------------------------------------
+vim.keymap.set('n', '<leader>sp', cmd "split")
+vim.keymap.set('n', '<leader>S', cmd "vsplit")
+
 vim.keymap.set('', '<M-->', cmd "new")
 vim.keymap.set('', '<M-=>', cmd "vnew")
 -- disabled in favor of alexghergh/nvim-tmux-navigation plugin:
@@ -38,7 +48,8 @@ vim.keymap.set('', '<M-=>', cmd "vnew")
 -- vim.keymap.set('', '<M-l>', [[<C-w>l]])
 vim.keymap.set('t', '<ESC>', [[<C-\><C-N>]])
 
-vim.keymap.set('n', '<M-w>', cmd "bd")
+vim.keymap.set('n', '<M-q>', cmd "bd")
+vim.keymap.set('n', '<M-x>', cmd "bd")
 vim.keymap.set('n', '<M-W>', cmd "bd!")
 
 vim.keymap.set('', '<M-H>', cmd "wincmd <")

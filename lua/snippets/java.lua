@@ -29,10 +29,18 @@ ls.add_snippets("java", {
  */
 ]]),
 
+    ls.parser.parse_snippet("testFoo",
+[[/**
+ * ${package_name}
+ * 
+ */
+]]),
+
     s("gclass", fmt([[/**
  * @author Carljo Rommel Reyes
  * @version $Id: {}.java, v 0.1 {} zcarljo-r.reyes $$
 */
 ]], { f(filename_base), f(get_date) }))
+
 })
 

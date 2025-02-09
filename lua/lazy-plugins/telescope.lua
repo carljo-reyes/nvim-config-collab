@@ -34,13 +34,16 @@ return {
             }
         }
     end,
-    -- config = true,
+    config = true,
     keys = {
-        { "<leader><leader>", cmd "Telescope find_files" },
-        { "<M-f>",            cmd "Telescope live_grep" },
+        { "<leader>T",        cmd "Telescope builtin" },
 
-        { "<leader>f", cmd "Telescope buffers" },
-        { "<leader>F",       cmd "Telescope filetypes" },
+        { "<leader><leader>", cmd "Telescope find_files" },
+
+        { "<M-f>",            cmd "Telescope live_grep" },
+        { "<leader>f",        cmd "Telescope live_grep" },
+        { "<leader>e",        cmd "Telescope buffers" },
+        { "<leader>cf",       cmd "Telescope filetypes" },
 
         { "<leader>h",        cmd "Telescope help_tags" },
     }

@@ -10,8 +10,8 @@ local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 ------------------------------------------------------------------------
 opt.mouse = 'a'                       -- Enable mouse support
 opt.swapfile = false                  -- Don't use swapfile
-opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
-opt.signcolumn = "auto:4"
+opt.completeopt = 'menuone'	      -- Autocomplete options
+opt.signcolumn = "auto:2-5"
 
 g.netrw_bufsettings = 'noma nomod rnu nu nobl nowrap ro'
 g.netrw_banner = 0
@@ -24,7 +24,7 @@ opt.relativenumber = true  -- Show relative line number
 opt.scrolloff = 4
 -- opt.cursorline = true
 opt.showmatch = false        -- Highlight matching parenthesis
-opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
+-- opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
 opt.ignorecase = true       -- Ignore case letters when search
@@ -42,3 +42,8 @@ opt.shiftwidth = 4          -- Shift 4 spaces when tab
 opt.tabstop = 4             -- 1 tab == 4 spaces
 opt.softtabstop = 4
 opt.smartindent = true      -- Autoindent new lines
+
+opt.foldmethod = 'expr'
+opt.foldexpr = [[getline(v:lnum)=~'^import.*' ? '1' : '0']]
+-- opt.foldlevel = 0;
+-- opt.foldlevelstart = 1;

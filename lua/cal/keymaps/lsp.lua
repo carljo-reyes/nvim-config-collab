@@ -1,3 +1,5 @@
+local cmd = require('cal.helpers.cmd');
+
 return function (_, bufnr)
     local nmap = function(keys, func, desc)
         if desc then
@@ -14,6 +16,9 @@ return function (_, bufnr)
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+    nmap('<leader>D', cmd "lua vim.diagnostic.open_float()", 'Show Line [D]iagnostics float')
+    nmap('<leader>dl', cmd "lua vim.diagnostic.setloclist()", 'Show Buffer[l]ocal Diagnostics list')
+    nmap('<leader>dL', cmd "lua vim.diagnostic.setqflist()", 'Show Global Diagnostics [L]ist')
     nmap('gd[', vim.diagnostic.goto_prev, '[G]oto Prev [D]iagnostic')
     nmap('gd]', vim.diagnostic.goto_next, '[G]oto Next [D]iagnostic')
 

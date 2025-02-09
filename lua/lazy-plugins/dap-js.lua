@@ -1,7 +1,7 @@
 return {
     {
         "microsoft/vscode-js-debug",
-        build = "git restore . && git clean -ffd && npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git restore package-lock.json",
+        build = "rm -rf out && git restore . && git clean -ffd && npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git restore package-lock.json",
     },
     {
         "mxsdev/nvim-dap-vscode-js",
