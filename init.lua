@@ -35,7 +35,7 @@ require("lazy").setup({
     performance = {
         rtp = {
             paths = {
-                vim.fn.stdpath("config") .. '/lua/cal',
+                vim.fn.stdpath("config") .. '/lua/cal/rtp',
                 -- vim.fn.stdpath("config") .. '/lua/snippets'
             }
         }
