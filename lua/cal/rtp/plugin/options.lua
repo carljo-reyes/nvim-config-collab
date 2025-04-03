@@ -20,7 +20,7 @@ g.netrw_banner = 0
 -- Neovim UI
 ------------------------------------------------------------------------
 opt.number = true           -- Show line number
-opt.relativenumber = true  -- Show relative line number
+opt.relativenumber = false  -- Show relative line number
 opt.scrolloff = 4
 -- opt.cursorline = true
 opt.showmatch = false        -- Highlight matching parenthesis
