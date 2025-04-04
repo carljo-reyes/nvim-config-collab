@@ -5,7 +5,8 @@ local home = os.getenv("HOME")
 
 MASON = vim.fn.stdpath("data") .. "/mason"
 
-JDTLS_PATH = MASON .. "/packages/jdtls"
+-- JDTLS_PATH = MASON .. "/packages/jdtls"
+JDTLS_PATH = home .. "/Programs/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
 
 LAUNCHER = vim.fn.glob(JDTLS_PATH .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
@@ -13,22 +14,33 @@ LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 -- JDTLS_PATH = home .. "/Programs/jdtls/jdt-language-server-1.9.0-202203031534"
 -- LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 
--- JAVA_DAP = vim.fn.glob(MASON ..
---     "/packages/java-debug-adapter" ..
---     "/extension/server/com.microsoft.java.debug.plugin-*.jar")
+JAVA_DAP = vim.fn.glob(MASON ..
+    "/packages/java-debug-adapter" ..
+    "/extension/server/com.microsoft.java.debug.plugin-*.jar")
 
-JAVA_DAP = vim.fn.glob(home ..
-    "/Programs/java-debug" ..
-    "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
+-- JAVA_DAP = vim.fn.glob(home ..
+--     "/Programs/java-debug" ..
+--     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
 local bundles = { JAVA_DAP }
+-- vim.list_extend(
+--     bundles,
+--     vim.split(
+--         vim.fn.glob(
+--             MASON ..
+--             "/packages/java-test" ..
+--             "/extension/server/*.jar",
+--             true),
+--         "\n")
+-- )
+
 vim.list_extend(
     bundles,
     vim.split(
         vim.fn.glob(
-            MASON ..
-            "/packages/java-test" ..
-            "/extension/server/*.jar",
+            home ..
+            "/Programs/vscode-java-test" ..
+            "/server/*.jar",
             true),
         "\n")
 )

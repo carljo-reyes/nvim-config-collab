@@ -38,9 +38,10 @@ return {
     keys = {
         { "<leader>T",        cmd "Telescope builtin" },
 
-        { "<leader><leader>", cmd "Telescope find_files" },
-
+        { "<leader><leader>", cmd "Telescope builtin" },
         { "<M-f>",            cmd "Telescope live_grep" },
+
+        { "<leader>o",        cmd "Telescope find_files" },
         { "<leader>f",        cmd "Telescope live_grep" },
         { "<leader>e",        cmd "Telescope buffers" },
         { "<leader>cf",       cmd "Telescope filetypes" },
