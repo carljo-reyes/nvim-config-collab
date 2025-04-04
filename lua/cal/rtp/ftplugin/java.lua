@@ -14,13 +14,13 @@ LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 -- JDTLS_PATH = home .. "/Programs/jdtls/jdt-language-server-1.9.0-202203031534"
 -- LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 
-JAVA_DAP = vim.fn.glob(MASON ..
-    "/packages/java-debug-adapter" ..
-    "/extension/server/com.microsoft.java.debug.plugin-*.jar")
+-- JAVA_DAP = vim.fn.glob(MASON ..
+--     "/packages/java-debug-adapter" ..
+--     "/extension/server/com.microsoft.java.debug.plugin-*.jar")
 
--- JAVA_DAP = vim.fn.glob(home ..
---     "/Programs/java-debug" ..
---     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
+JAVA_DAP = vim.fn.glob(home ..
+    "/Programs/java-debug" ..
+    "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
 local bundles = { JAVA_DAP }
 -- vim.list_extend(
