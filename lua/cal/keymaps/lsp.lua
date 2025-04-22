@@ -9,8 +9,8 @@ return function (_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    nmap('gd', vim.lsp.buf.definition, '[G]oto [d]efinition')
+    nmap('gD', vim.lsp.buf.type_definition, '[G]oto Type[D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
