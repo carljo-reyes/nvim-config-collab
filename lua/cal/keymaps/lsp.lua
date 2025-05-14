@@ -17,6 +17,7 @@ return function (_, bufnr)
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     nmap('<leader>D', cmd "lua vim.diagnostic.open_float()", 'Show Line [D]iagnostics float')
+    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[G]oto [R]eferences')
     nmap('<leader>dl', cmd "lua vim.diagnostic.setloclist()", 'Show Buffer[l]ocal Diagnostics list')
     nmap('<leader>dL', cmd "lua vim.diagnostic.setqflist()", 'Show Global Diagnostics [L]ist')
     nmap('gd[', vim.diagnostic.goto_prev, '[G]oto Prev [D]iagnostic')

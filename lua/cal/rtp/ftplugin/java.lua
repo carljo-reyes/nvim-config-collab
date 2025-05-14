@@ -9,8 +9,9 @@ MASON = vim.fn.stdpath("data") .. "/mason"
 JDTLS_PATH = home .. "/Programs/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
 
 LAUNCHER = vim.fn.glob(JDTLS_PATH .. '/plugins/org.eclipse.equinox.launcher_*.jar')
-LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
---
+
+LOMBOK = MASON .. "/packages/jdtls/lombok.jar"
+
 -- JDTLS_PATH = home .. "/Programs/jdtls/jdt-language-server-1.9.0-202203031534"
 -- LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 
@@ -135,16 +136,18 @@ local settings = {
 local opts = {
     capabilities = capabilities,
     cmd = {
-        home .. '/.sdkman/candidates/java/21.0.4-amzn/bin/java',
+        -- home .. '/.sdkman/candidates/java/21.0.4-amzn/bin/java',
+        home .. '/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/jre/21.0.6-linux-x86_64/bin/java',
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '--add-opens', 'java.base/sun.nio.fs=ALL-UNNAMED',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
         '-Dlog.protocol=true',
         '-Dlog.level=ALL',
         '-Xmx1g',
-        '--add-modules=ALL-SYSTEM',
-        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         '-javaagent:' .. LOMBOK,
         '-jar', LAUNCHER,
         '-configuration', JDTLS_PATH .. '/config_linux',
