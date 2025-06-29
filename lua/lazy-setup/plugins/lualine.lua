@@ -10,5 +10,15 @@ return {
             theme = 'tokyonight',
         }
     },
-    config = true
+    config = {
+        sections = {
+            lualine_y = {},
+            lualine_z = {
+                {
+                    require("noice").api.statusline.mode.get,
+                    cond = require("noice").api.statusline.mode.has,
+                }
+            }
+        }
+    }
 }

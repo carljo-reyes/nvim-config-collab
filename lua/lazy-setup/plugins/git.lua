@@ -13,7 +13,15 @@ return {
                 ignore_whitespace = true,
                 virt_text_priority = 100,
                 use_focus = true,
+                max_line_length = 50
             },
+            -- current_line_blame_formatter = function(name, blame_info) 
+            --     return {{
+            --         string.sub(blame_info.committer, 0, 10),
+            --         "GitSignsCurrentLineBlame"
+            --     }}
+            -- end
+            
         },
         keys = {
             { "g[", cmd "Gitsigns prev_hunk" },

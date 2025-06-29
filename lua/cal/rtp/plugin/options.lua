@@ -36,6 +36,7 @@ opt.breakindent = true
 opt.showbreak = ">>  "
 opt.termguicolors = true    -- Enable 24-bit RGB colors
 opt.laststatus=3            -- Set global statusline
+opt.cmdheight=0
 
 -----------------------------------------------------------------------
 -- Tabs, indent

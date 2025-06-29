@@ -7,44 +7,50 @@ MASON = vim.fn.stdpath("data") .. "/mason"
 
 -- JDTLS_PATH = MASON .. "/packages/jdtls"
 JDTLS_PATH = home .. "/Programs/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
+-- JDTLS_PATH = home .. "/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/server"
 
 LAUNCHER = vim.fn.glob(JDTLS_PATH .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
-LOMBOK = MASON .. "/packages/jdtls/lombok.jar"
+-- LOMBOK = MASON .. "/packages/jdtls/lombok.jar"
 
 -- JDTLS_PATH = home .. "/Programs/jdtls/jdt-language-server-1.9.0-202203031534"
 -- LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
+LOMBOK = MASON .. "/packages/jdtls/lombok.jar"
 
 -- JAVA_DAP = vim.fn.glob(MASON ..
 --     "/packages/java-debug-adapter" ..
 --     "/extension/server/com.microsoft.java.debug.plugin-*.jar")
+
+-- JAVA_DAP = vim.fn.glob(home ..
+--     "/.vscode-server/extensions/vscjava.vscode-java-debug-0.58.2/server" ..
+--     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
 JAVA_DAP = vim.fn.glob(home ..
     "/Programs/java-debug" ..
     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
 local bundles = { JAVA_DAP }
--- vim.list_extend(
---     bundles,
---     vim.split(
---         vim.fn.glob(
---             MASON ..
---             "/packages/java-test" ..
---             "/extension/server/*.jar",
---             true),
---         "\n")
--- )
-
 vim.list_extend(
     bundles,
     vim.split(
         vim.fn.glob(
-            home ..
-            "/Programs/vscode-java-test" ..
-            "/server/*.jar",
+            MASON ..
+            "/packages/java-test" ..
+            "/extension/server/*.jar",
             true),
         "\n")
 )
+
+-- vim.list_extend(
+--     bundles,
+--     vim.split(
+--         vim.fn.glob(
+--             home ..
+--             "/.vscode-server/extensions/vscjava.vscode-java-test-0.43.1" ..
+--             "/server/*.jar",
+--             true),
+--         "\n")
+-- )
 
 LSP_KEYS = require('cal.keymaps.lsp')
 EXT_ON_ATTACH = function(_, bufnr)
@@ -100,11 +106,6 @@ local capabilities = {
     }
 }
 
--- local pathExtractFirst = function(path)
---     local results = vim.fn.glob(path, false, true)
---     return results[#results]
--- end
---
 vim.list_extend(capabilities, require('cmp_nvim_lsp').default_capabilities())
 local extendedClientCapabilities = jdtls.extendedClientCapabilities;
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
@@ -136,8 +137,8 @@ local settings = {
 local opts = {
     capabilities = capabilities,
     cmd = {
-        -- home .. '/.sdkman/candidates/java/21.0.4-amzn/bin/java',
-        home .. '/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/jre/21.0.6-linux-x86_64/bin/java',
+        home .. '/.sdkman/candidates/java/21.0.4-amzn/bin/java',
+        -- home .. '/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/jre/21.0.6-linux-x86_64/bin/java',
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
@@ -156,7 +157,7 @@ local opts = {
     root_dir = root_dir,
     on_attach = EXT_ON_ATTACH,
     init_options = {
-        bundles = bundles,
+        bundles = bundles_2,
         extendedClientCapabilities = extendedClientCapabilities,
     },
     settings = settings

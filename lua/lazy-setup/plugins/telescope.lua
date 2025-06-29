@@ -44,6 +44,7 @@ return {
         { "<leader>o",        cmd "Telescope find_files" },
         { "<leader>f",        cmd "Telescope live_grep" },
         { "<leader>df",        cmd "Telescope current_buffer_fuzzy_find" },
+        { "<C-f>",        cmd "Telescope current_buffer_fuzzy_find" },
         { "<leader>e",        cmd "Telescope buffers" },
         { "<leader>cf",       cmd "Telescope filetypes" },
 
