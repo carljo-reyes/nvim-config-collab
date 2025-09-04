@@ -2,6 +2,9 @@ local jdtls = require('jdtls');
 local mason_registry = require("mason-registry")
 
 local home = os.getenv("HOME")
+local java_bin = home .. '/.sdkman/candidates/java/' ..
+    '21.0.8-amzn' ..
+    '/bin/java'
 
 MASON = vim.fn.stdpath("data") .. "/mason"
 
@@ -34,12 +37,23 @@ vim.list_extend(
     bundles,
     vim.split(
         vim.fn.glob(
-            MASON ..
-            "/packages/java-test" ..
-            "/extension/server/*.jar",
+            home ..
+            "/Programs/vscode-java-test" ..
+            "/server/*.jar",
             true),
         "\n")
 )
+
+-- vim.list_extend(
+--     bundles,
+--     vim.split(
+--         vim.fn.glob(
+--             MASON ..
+--             "/packages/java-test" ..
+--             "/extension/server/*.jar",
+--             true),
+--         "\n")
+-- )
 
 -- vim.list_extend(
 --     bundles,
@@ -133,11 +147,10 @@ local settings = {
     }
 }
 
-
 local opts = {
     capabilities = capabilities,
     cmd = {
-        home .. '/.sdkman/candidates/java/21.0.4-amzn/bin/java',
+        java_bin,
         -- home .. '/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/jre/21.0.6-linux-x86_64/bin/java',
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
@@ -157,7 +170,7 @@ local opts = {
     root_dir = root_dir,
     on_attach = EXT_ON_ATTACH,
     init_options = {
-        bundles = bundles_2,
+        bundles = bundles,
         extendedClientCapabilities = extendedClientCapabilities,
     },
     settings = settings

@@ -50,4 +50,4 @@ opt.smartindent = true      -- Autoindent new lines
 opt.foldmethod = 'expr'
 opt.foldexpr = [[getline(v:lnum)=~'^import.*' ? '1' : '0']]
 -- opt.foldlevel = 0;
--- opt.foldlevelstart = 1;
+opt.foldlevelstart = 9;
