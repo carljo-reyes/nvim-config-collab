@@ -87,7 +87,7 @@ EXT_ON_ATTACH = function(_, bufnr)
     vim.keymap.set('n', "<leader>;W", function()
         vim.cmd [[JdtWipeDataAndRestart]]
     end)
-    vim.keymap.set('n', "<leader>;bf", function()
+    vim.keymap.set('n', "<leader>;B", function()
         vim.cmd [[JdtCompile full]]
     end)
 
