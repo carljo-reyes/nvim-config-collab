@@ -34,6 +34,35 @@ return {
             }
         }
     end,
+    init = function ()
+        local builtin = require("telescope.builtin")
+        local actions = require("telescope.actions")
+        local action_state = require("telescope.actions.state")
+
+        local function pick_branch()
+            builtin.git_branches({
+                attach_mappings = function(prompt_bufnr, map)
+                    local function on_select(...)
+                        local selection = action_state.get_selected_entry()
+                        actions.close(prompt_bufnr)
+                        -- print("You picked branch: " .. selection.value)
+                        vim.cmd(string.format("Gitsigns change_base %s 1'", selection.value))
+                        require('neo-tree.command').execute({
+                            action = "show",
+                            source = "git_status",
+                            git_base = selection.value,
+                        })
+                    end
+
+                    map("i", "<CR>", on_select)
+                    map("n", "<CR>", on_select)
+                    return true
+                end,
+            })
+        end
+
+        vim.api.nvim_create_user_command("PickGitBranch", pick_branch, {})
+    end,
     config = true,
     keys = {
         { "<leader>T",        cmd "Telescope builtin" },

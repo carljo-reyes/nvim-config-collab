@@ -17,7 +17,7 @@ ls.add_snippets("java", {
     ls.parser.parse_snippet("globe",
 [[/**
  * Globe FinTech Innovations, Inc.
- * Copyright (c) 2004-2024 All Rights Reserved.
+ * Copyright (c) 2004-2025 All Rights Reserved.
  */
 ]]),
 

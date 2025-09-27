@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>T', cmd "tab sb")
 ----------------------------------------------------------------
 -- panes
 ----------------------------------------------------------------
-vim.keymap.set('n', '<leader>sp', cmd "split")
+vim.keymap.set('n', '<leader>s', cmd "split")
 vim.keymap.set('n', '<leader>S', cmd "vsplit")
 
 vim.keymap.set('', '<M-->', cmd "new")
@@ -49,7 +49,6 @@ vim.keymap.set('', '<M-=>', cmd "vnew")
 vim.keymap.set('t', '<ESC>', [[<C-\><C-N>]])
 
 vim.keymap.set('n', '<M-q>', cmd "bd")
-vim.keymap.set('n', '<M-x>', cmd "bd")
 vim.keymap.set('n', '<M-W>', cmd "bd!")
 
 vim.keymap.set('', '<M-H>', cmd "wincmd <")

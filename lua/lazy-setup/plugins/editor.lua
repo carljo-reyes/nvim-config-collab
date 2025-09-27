@@ -1,3 +1,5 @@
+local cmd = require('cal.helpers.cmd')
+
 return {
     {
         'lukas-reineke/indent-blankline.nvim',
@@ -17,17 +19,20 @@ return {
             -- add any options here
         },
         dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
+        },
+        keys = {
+            { "<M-x>", cmd "NoiceDismiss" }
         }
     },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = true
-    }
+    },
+    {
+        "tpope/vim-surround",
+        lazy = false
+    },
 }

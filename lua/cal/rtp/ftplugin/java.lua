@@ -1,4 +1,5 @@
 local jdtls = require('jdtls');
+local jdtls_tests = require('jdtls.tests');
 local mason_registry = require("mason-registry")
 
 local home = os.getenv("HOME")
@@ -99,6 +100,9 @@ EXT_ON_ATTACH = function(_, bufnr)
     end)
     vim.keymap.set('n', "<leader>;c", function()
         jdtls.test_class()
+    end)
+    vim.keymap.set('n', "<leader>;g", function()
+        jdtls_tests.goto_subjects()
     end)
 end
 
