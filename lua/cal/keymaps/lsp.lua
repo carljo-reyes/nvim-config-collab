@@ -30,7 +30,7 @@ return function (_, bufnr)
     vim.keymap.set('v', '<Space>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction 2' })
 
     -- Lesser used LSP functionality
-    nmap('<leader>f', vim.lsp.buf.format, '[F]ormat')
+    nmap('<leader>t', vim.lsp.buf.format, '[F]ormat')
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)

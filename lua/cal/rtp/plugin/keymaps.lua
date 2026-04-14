@@ -14,10 +14,12 @@ vim.keymap.set('v', '<cr>', [["+y]])
 vim.keymap.set('n', '<leader>w', cmd "update")
 
 vim.keymap.set({'n', 'v'}, 'gy', [["+y]])
+vim.keymap.set({'n', 'v'}, '<leader>p', [["0p]])
 vim.keymap.set('n', 'gY', [["+y$]])
 
 vim.keymap.set('n', '+', [[<C-a>]])
 vim.keymap.set('n', '_', [[<C-x>]])
+
 
 ----------------------------------------------------------------
 -- tabs

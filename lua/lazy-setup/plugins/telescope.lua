@@ -38,27 +38,75 @@ return {
         local builtin = require("telescope.builtin")
         local actions = require("telescope.actions")
         local action_state = require("telescope.actions.state")
+        
+        local pickers = require("telescope.pickers")
+        local finders = require("telescope.finders")
+        local conf = require("telescope.config").values
+        local actions = require("telescope.actions")
+        local action_state = require("telescope.actions.state")
+
+        -- local function pick_branch()
+        --     builtin.git_branches({
+        --         attach_mappings = function(prompt_bufnr, map)
+        --             local function on_select(...)
+        --                 local selection = action_state.get_selected_entry()
+        --                 actions.close(prompt_bufnr)
+        --                 -- print("You picked branch: " .. selection.value)
+        --                 vim.cmd(string.format("Gitsigns change_base %s 1'", selection.value))
+        --                 require('neo-tree.command').execute({
+        --                     action = "show",
+        --                     source = "git_status",
+        --                     git_base = selection.value,
+        --                 })
+        --             end
+        --
+        --             map("i", "<CR>", on_select)
+        --             map("n", "<CR>", on_select)
+        --             return true
+        --         end,
+        --     })
+        -- end
 
         local function pick_branch()
-            builtin.git_branches({
+            pickers.new({}, {
+                prompt_title = "Git Refs (tags + heads)",
+                finder = finders.new_oneshot_job(
+                    { "git", "show-ref", "--tags", "--heads" },
+                    { entry_maker = function(line)
+                        -- line format: "<hash> <ref>"
+                        local hash, ref = line:match("([^ ]+) +(.*)")
+                        return {
+                            value = line,
+                            display = ref .. "  (" .. hash .. ")",
+                            ordinal = ref,
+                            hash = hash,
+                            ref = ref,
+                        }
+                    end
+                    }
+                ),
+                sorter = conf.generic_sorter({}),
                 attach_mappings = function(prompt_bufnr, map)
-                    local function on_select(...)
+                    local select_ref = function()
                         local selection = action_state.get_selected_entry()
                         actions.close(prompt_bufnr)
-                        -- print("You picked branch: " .. selection.value)
-                        vim.cmd(string.format("Gitsigns change_base %s 1'", selection.value))
+
+                        -- Do something with entry.hash or entry.ref
+                        print("Selected:", selection.ref .. " (" .. selection.hash .. ")")
+                        vim.cmd(string.format("Gitsigns change_base %s 1'", selection.hash))
                         require('neo-tree.command').execute({
                             action = "show",
                             source = "git_status",
-                            git_base = selection.value,
+                            git_base = selection.hash,
                         })
                     end
 
-                    map("i", "<CR>", on_select)
-                    map("n", "<CR>", on_select)
+                    map("i", "<CR>", select_ref)
+                    map("n", "<CR>", select_ref)
+
                     return true
                 end,
-            })
+            }):find()
         end
 
         vim.api.nvim_create_user_command("PickGitBranch", pick_branch, {})

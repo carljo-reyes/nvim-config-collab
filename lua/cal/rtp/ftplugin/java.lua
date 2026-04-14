@@ -9,8 +9,8 @@ local java_bin = home .. '/.sdkman/candidates/java/' ..
 
 MASON = vim.fn.stdpath("data") .. "/mason"
 
--- JDTLS_PATH = MASON .. "/packages/jdtls"
-JDTLS_PATH = home .. "/Programs/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
+JDTLS_PATH = MASON .. "/packages/jdtls"
+-- JDTLS_PATH = home .. "/Programs/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository"
 -- JDTLS_PATH = home .. "/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/server"
 
 LAUNCHER = vim.fn.glob(JDTLS_PATH .. '/plugins/org.eclipse.equinox.launcher_*.jar')
@@ -21,40 +21,40 @@ LAUNCHER = vim.fn.glob(JDTLS_PATH .. '/plugins/org.eclipse.equinox.launcher_*.ja
 -- LOMBOK = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
 LOMBOK = MASON .. "/packages/jdtls/lombok.jar"
 
--- JAVA_DAP = vim.fn.glob(MASON ..
---     "/packages/java-debug-adapter" ..
---     "/extension/server/com.microsoft.java.debug.plugin-*.jar")
+JAVA_DAP = vim.fn.glob(MASON ..
+    "/packages/java-debug-adapter" ..
+    "/extension/server/com.microsoft.java.debug.plugin-*.jar")
 
 -- JAVA_DAP = vim.fn.glob(home ..
 --     "/.vscode-server/extensions/vscjava.vscode-java-debug-0.58.2/server" ..
 --     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
-JAVA_DAP = vim.fn.glob(home ..
-    "/Programs/java-debug" ..
-    "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
+-- JAVA_DAP = vim.fn.glob(home ..
+--     "/Programs/java-debug" ..
+--     "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
 
 local bundles = { JAVA_DAP }
-vim.list_extend(
-    bundles,
-    vim.split(
-        vim.fn.glob(
-            home ..
-            "/Programs/vscode-java-test" ..
-            "/server/*.jar",
-            true),
-        "\n")
-)
-
 -- vim.list_extend(
 --     bundles,
 --     vim.split(
 --         vim.fn.glob(
---             MASON ..
---             "/packages/java-test" ..
---             "/extension/server/*.jar",
+--             home ..
+--             "/Programs/vscode-java-test" ..
+--             "/server/*.jar",
 --             true),
 --         "\n")
 -- )
+
+vim.list_extend(
+    bundles,
+    vim.split(
+        vim.fn.glob(
+            MASON ..
+            "/packages/java-test" ..
+            "/extension/server/*.jar",
+            true),
+        "\n")
+)
 
 -- vim.list_extend(
 --     bundles,
