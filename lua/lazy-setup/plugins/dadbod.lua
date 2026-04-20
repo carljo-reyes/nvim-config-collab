@@ -1,4 +1,4 @@
 return {
-    -- "tpope/vim-dadbod",
-    -- config = false,
+    "tpope/vim-dadbod",
+    config = false,
 }
