@@ -130,6 +130,29 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
 
 local settings = {
     java = {
+        configuration = {
+            runtimes = {
+                {
+                    name = "JavaSE-1.8",
+                    path = home .. '/.sdkman/candidates/java/' ..
+                        '8.0.462-amzn' ..
+                        '/bin/java',
+                },
+                {
+                    name = "JavaSE-17",
+                    path = home .. '/.sdkman/candidates/java/' ..
+                        '17.0.16-amzn' ..
+                        '/bin/java',
+                },
+                {
+                    default = true,
+                    name = "JavaSE-21",
+                    path = home .. '/.sdkman/candidates/java/' ..
+                        '21.0.8-amzn' ..
+                        '/bin/java',
+                }
+            },
+        },
         signatureHelp = { enabled = true },
         completion = {
             favoriteStaticMembers = {
@@ -155,7 +178,6 @@ local opts = {
     capabilities = capabilities,
     cmd = {
         java_bin,
-        -- home .. '/.vscode-server/extensions/redhat.java-1.41.1-linux-x64/jre/21.0.6-linux-x86_64/bin/java',
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
