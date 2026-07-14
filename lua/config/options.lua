@@ -7,3 +7,6 @@ vim.g.dbs = {
 }
 
 vim.opt.clipboard = ""
+vim.opt.wrap = true
+
+vim.g.autoformat = false
