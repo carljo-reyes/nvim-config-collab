@@ -5,16 +5,22 @@ local cmd = function(command)
   return "<cmd>" .. command .. "<cr>"
 end
 
-vim.keymap.set("t", "<ESC>", [[<C-\><C-N>]])
-vim.keymap.set("n", "<M-i>", cmd("bprevious"))
-vim.keymap.set("n", "<M-o>", cmd("bnext"))
-vim.keymap.set("v", "<Enter>", '"+y')
+local map = function(mode, lhs, rhs, opts)
+  vim.keymap.set(vim.split(mode, ""), lhs, rhs, opts)
+end
 
-vim.keymap.set("n", "<Tab>i", cmd("tabprevious"))
-vim.keymap.set("n", "<Tab>o", cmd("tabnext"))
-vim.keymap.set("n", "<Tab>n", cmd("tab split"))
-vim.keymap.set("n", "<Tab>q", cmd("tabclose"))
+map("t", "<ESC>", [[<C-\><C-N>]])
+map("n", "<M-i>", cmd("bprevious"))
+map("n", "<M-o>", cmd("bnext"))
+map("v", "<Enter>", '"+y')
 
-vim.keymap.set("n", "_", [[<C-x>]])
-vim.keymap.set("n", "+", [[<C-a>]])
-vim.keymap.set({ "i", "n", "v" }, "<C-a>", [[<Esc>ggVG]])
+map("n", "<Tab>i", cmd("tabprevious"))
+map("n", "<Tab>o", cmd("tabnext"))
+map("n", "<Tab>n", cmd("tab split"))
+map("n", "<Tab>q", cmd("tabclose"))
+
+map("n", "_", [[<C-x>]])
+map("n", "+", [[<C-a>]])
+map("inv", "<C-a>", [[<Esc>ggVG]])
+
+map("inv", "<M-/>", [[gcc]], { remap = true })
