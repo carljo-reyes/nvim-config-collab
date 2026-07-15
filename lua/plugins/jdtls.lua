@@ -22,10 +22,11 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     opts = {
+      -- see https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
       settings = {
         java = {
           format = {
-            enabled = false,
+            enabled = true,
           },
         },
       },
