@@ -14,6 +14,7 @@ return {
         local lombok_jar = vim.fn.expand("$MASON/share/jdtls/lombok.jar")
         table.insert(cmd, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
       end
+
       opts.cmd = cmd
     end,
   },
