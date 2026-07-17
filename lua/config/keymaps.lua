@@ -1,13 +1,8 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local cmd = function(command)
-  return "<cmd>" .. command .. "<cr>"
-end
-
-local map = function(mode, lhs, rhs, opts)
-  vim.keymap.set(vim.split(mode, ""), lhs, rhs, opts)
-end
+local cmd = require("cal.mapping").cmd
+local map = require("cal.mapping").map
 
 map("t", "<ESC>", [[<C-\><C-N>]])
 map("n", "<M-i>", cmd("bprevious"))
