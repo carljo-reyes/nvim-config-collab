@@ -24,6 +24,11 @@ return {
         key = "o",
         action = ":lua Snacks.dashboard.pick('files')",
       },
+      {
+        hidden = true,
+        key = "n",
+        action = ":ene | set buftype=nofile | startinsert",
+      },
     })
   end,
 }
