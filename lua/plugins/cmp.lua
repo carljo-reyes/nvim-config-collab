@@ -6,11 +6,16 @@ end
 
 local select = function(cmp, direction)
   return function(fallback)
-    if cmp.visible() and direction >= 1 then
-      -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
-      cmp.select_next_item()
-    elseif cmp.visible() and direction < 1 then
-      cmp.select_prev_item()
+    if cmp.visible() then
+      local entries = cmp.get_entries()
+
+      if #entries == 1 and direction >= 1 then
+        cmp.confirm({ select = true })
+      elseif direction >= 1 then
+        cmp.select_next_item()
+      else
+        cmp.select_prev_item()
+      end
     elseif vim.snippet.active({ direction = direction }) then
       vim.schedule(function()
         vim.snippet.jump(direction)
